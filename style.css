@@ -47,3 +47,59 @@ nav a:hover {
   text-decoration: underline;
 
 }
+
+main {
+
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+
+}
+
+section {
+
+  margin: 1.5rem 0;
+  padding: 2rem;
+  background-color: #315d8b;
+  border-radius: 0.5rem;
+  scroll-margin-top: 5rem;
+
+}
+
+a {
+
+  color: #d9f0ff;
+
+}
+
+a:hover {
+
+  color: white;
+
+}
+
+.btn {
+
+  display: inline-block;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  padding: 0.7rem 1rem;
+  color: #172554;
+  background-color: #d9f0ff;
+  text-decoration: none;
+  border-radius: 0.375rem;
+
+}
+
+
+.btn:hover {
+  color:#172554;
+  background-color: white;
+
+}
+
+a {
+
+  outline: 3px solid #ffd166;
+  outline-offset: 3px;
+
+}
