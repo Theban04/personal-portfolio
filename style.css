@@ -1,0 +1,49 @@
+html {
+  
+  scroll-behavior: smooth;
+
+}
+
+body {
+
+  margin : 0;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #24255e;
+
+}
+
+
+header {
+
+    position: sticky;
+    top: 0;
+    background-color: #24255e;
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+
+}
+
+
+nav {
+
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+
+}
+
+nav a {
+
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+
+}
+
+nav a:hover {
+
+  text-decoration: underline;
+
+}
