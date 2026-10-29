@@ -1,16 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
 
 :root {
-  --color-background: #f4f6f8;
-  --color-surface: #ffffff;
-  --color-text: #202a36;
-  --color-muted: #596675;
-  --color-primary: #172b4d;
-  --color-accent: #315fbd;
-  --color-accent-light: #eaf0fa;
-  --color-border: #dce2e9;
-  --color-shadow: rgba(23, 43, 77, 0.08);
+  --color-background: #07070b;
+  --color-surface: rgba(20, 20, 27, 0.82);
+  --color-text: #f4f4f7;
+  --color-muted: #b5b5c1;
+  --color-white: #ffffff;
+  --color-border: rgba(255, 255, 255, 0.13);
+  --color-glow: rgba(255, 255, 255, 0.12);
 }
 
 
@@ -21,23 +19,35 @@ html {
 
 
 body {
+  position: relative;
+  min-height: 100vh;
   margin: 0;
-  font-family: "Inter", "Segoe UI", Arial, sans-serif;
-  line-height: 1.7;
+  overflow-x: hidden;
   color: var(--color-text);
+  font-family: "Inter", Arial, sans-serif;
+  line-height: 1.7;
   background-color: var(--color-background);
+  background-image:
+    radial-gradient(1px 1px at 8% 18%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 25% 72%, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(1.5px 1.5px at 43% 34%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 61% 83%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 78% 22%, rgba(255, 255, 255, 0.65), transparent),
+    radial-gradient(1px 1px at 91% 58%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(500px circle at 15% 12%, rgba(255, 255, 255, 0.055), transparent 70%),
+    radial-gradient(600px circle at 85% 45%, rgba(255, 255, 255, 0.04), transparent 70%);
+  background-attachment: fixed;
 }
 
-
-/* Navigation */
 
 header {
   position: sticky;
   top: 0;
   z-index: 10;
   padding: 1rem 1.5rem;
-  background-color: var(--color-primary);
-  box-shadow: 0 2px 12px var(--color-shadow);
+  background-color: rgba(7, 7, 11, 0.78);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(16px);
 }
 
 
@@ -53,16 +63,17 @@ nav {
 
 
 nav a {
-  color: #ffffff;
+  color: var(--color-muted);
   font-weight: 500;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
 
 nav a:hover,
 nav a.active {
-  color: #b9d0ff;
+  color: var(--color-white);
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.65);
 }
 
 
@@ -70,12 +81,10 @@ nav a:focus-visible,
 a:focus-visible,
 button:focus-visible,
 input:focus-visible {
-  outline: 3px solid #f0bd4f;
+  outline: 2px solid var(--color-white);
   outline-offset: 4px;
 }
 
-
-/* Main layout */
 
 main {
   width: min(100% - 2rem, 1050px);
@@ -84,34 +93,42 @@ main {
 
 
 section {
+  position: relative;
   margin: 2rem 0;
   padding: clamp(1.5rem, 4vw, 3rem);
-  background-color: var(--color-surface);
+  overflow: hidden;
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 16px;
-  box-shadow: 0 8px 24px var(--color-shadow);
+  border-radius: 18px;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.32),
+    0 0 30px var(--color-glow);
+  backdrop-filter: blur(12px);
+  animation: float-in 0.8s ease both;
 }
 
 
 h1,
 h2,
 h3 {
-  color: var(--color-primary);
+  color: var(--color-white);
+  font-family: "Space Grotesk", "Inter", Arial, sans-serif;
   line-height: 1.25;
 }
 
 
 h1 {
   margin-top: 0;
-  font-size: clamp(2.2rem, 6vw, 3.6rem);
-  letter-spacing: -0.04em;
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  letter-spacing: -0.05em;
+  text-shadow: 0 0 26px rgba(255, 255, 255, 0.2);
 }
 
 
 h2 {
   margin-top: 0;
   font-size: clamp(1.7rem, 4vw, 2.25rem);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
 }
 
 
@@ -130,31 +147,34 @@ section p:last-child {
 }
 
 
-/* Home section */
-
 #home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 340px;
   margin-top: 2.5rem;
-  padding-top: clamp(3rem, 8vw, 6rem);
-  padding-bottom: clamp(3rem, 8vw, 6rem);
-  background: linear-gradient(135deg, #ffffff 55%, #edf2fa);
+  background:
+    radial-gradient(500px circle at 85% 15%, rgba(255, 255, 255, 0.09), transparent 65%),
+    var(--color-surface);
 }
 
 
 #home p {
   max-width: 700px;
-  font-size: 1.1rem;
+  font-size: 1.12rem;
 }
 
 
-/* Links and buttons */
-
 a {
-  color: var(--color-accent);
+  color: var(--color-white);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: text-shadow 0.2s ease;
 }
 
 
 a:hover {
-  color: var(--color-primary);
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.7);
 }
 
 
@@ -162,26 +182,28 @@ a:hover {
 button {
   display: inline-block;
   padding: 0.75rem 1.15rem;
-  color: #ffffff;
+  color: #09090d;
   font: inherit;
   font-weight: 600;
   text-decoration: none;
-  background-color: var(--color-accent);
-  border: 2px solid var(--color-accent);
-  border-radius: 8px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-white);
+  border-radius: 9px;
   cursor: pointer;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.16);
   transition:
+    color 0.2s ease,
     background-color 0.2s ease,
-    border-color 0.2s ease,
+    box-shadow 0.2s ease,
     transform 0.2s ease;
 }
 
 
 .btn:hover,
 button:hover {
-  color: #ffffff;
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
+  color: var(--color-white);
+  background-color: transparent;
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.32);
   transform: translateY(-2px);
 }
 
@@ -192,37 +214,40 @@ button:active {
 }
 
 
-/* Project search and filters */
-
 #project-search {
   width: min(100%, 420px);
   margin: 0.5rem 0 1rem;
   padding: 0.8rem 1rem;
-  color: var(--color-text);
+  color: var(--color-white);
   font: inherit;
-  background-color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.35);
   border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: 9px;
+}
+
+
+#project-search::placeholder {
+  color: #92929d;
 }
 
 
 .filter-button {
   margin: 0.25rem 0.35rem 0.5rem 0;
-  color: var(--color-primary);
-  background-color: var(--color-accent-light);
-  border-color: transparent;
+  color: var(--color-text);
+  background-color: rgba(255, 255, 255, 0.07);
+  border-color: var(--color-border);
+  box-shadow: none;
 }
 
 
 .filter-button:hover,
 .filter-button.active {
-  color: #ffffff;
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
+  color: #09090d;
+  background-color: var(--color-white);
+  border-color: var(--color-white);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.22);
 }
 
-
-/* Project cards */
 
 .project-grid {
   display: grid;
@@ -236,16 +261,31 @@ button:active {
 #projects article {
   margin: 1.25rem 0;
   padding: 1.5rem;
-  background-color: #ffffff;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.055), transparent 60%),
+    rgba(10, 10, 15, 0.65);
   border: 1px solid var(--color-border);
-  border-top: 3px solid var(--color-accent);
-  border-radius: 10px;
-  box-shadow: 0 4px 14px var(--color-shadow);
+  border-radius: 13px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
 
 
 .project-grid .project-card {
   margin: 0;
+}
+
+
+.project-card:hover,
+#projects article:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow:
+    0 10px 32px rgba(0, 0, 0, 0.32),
+    0 0 22px rgba(255, 255, 255, 0.09);
+  transform: translateY(-4px);
 }
 
 
@@ -267,14 +307,30 @@ button:active {
 }
 
 
-/* Contact section */
-
 #contact a {
   margin: 0.35rem 0.5rem 0.35rem 0;
 }
 
 
-/* Mobile layout */
+#back-to-top[hidden] {
+  display: none;
+}
+
+
+@keyframes float-in {
+
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
 
 @media (max-width: 650px) {
 
@@ -297,10 +353,11 @@ button:active {
   section {
     margin: 1rem 0;
     padding: 1.35rem;
-    border-radius: 12px;
+    border-radius: 14px;
   }
 
   #home {
+    min-height: 280px;
     margin-top: 1rem;
   }
 
@@ -317,8 +374,6 @@ button:active {
 }
 
 
-/* Reduce motion when requested in device settings */
-
 @media (prefers-reduced-motion: reduce) {
 
   html {
@@ -328,6 +383,7 @@ button:active {
   *,
   *::before,
   *::after {
+    animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
 
