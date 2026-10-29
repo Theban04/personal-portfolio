@@ -1,150 +1,143 @@
-// Feature 1: Filter project cards by category.
-const filterButtons = document.querySelectorAll(".filter-button");
-const projectCards = document.querySelectorAll("#projects article");
-const projectSearch = document.getElementById("project-search");
+document.addEventListener("DOMContentLoaded", function () {
 
-let activeCategory = "all";
+  // Project filters and search
+  const filterButtons = document.querySelectorAll(".filter-button");
+  const projectCards = document.querySelectorAll("#projects article, .project-card");
+  const searchInput = document.querySelector("#project-search");
 
-function updateProjects() {
+  let selectedCategory = "all";
+  let searchText = "";
 
-  const searchText = projectSearch
-    ? projectSearch.value.trim().toLowerCase()
-    : "";
+  function showMatchingProjects() {
 
-  projectCards.forEach(function (project) {
+    projectCards.forEach(function (card) {
 
-    const categoryMatches =
-      activeCategory === "all" ||
-      project.dataset.category === activeCategory;
+      const cardCategory = (card.dataset.category || "").toLowerCase();
+      const cardText = card.textContent.toLowerCase();
 
-    // Feature 2: Search project titles and descriptions.
-    const searchMatches =
-      project.textContent.toLowerCase().includes(searchText);
+      const matchesCategory =
+        selectedCategory === "all" || cardCategory === selectedCategory;
 
-    project.hidden = !(categoryMatches && searchMatches);
+      const matchesSearch = cardText.includes(searchText);
 
-  });
-
-}
-
-filterButtons.forEach(function (button) {
-
-  button.addEventListener("click", function () {
-
-    activeCategory = button.dataset.filter;
-
-    filterButtons.forEach(function (filterButton) {
-
-      filterButton.setAttribute("aria-pressed", "false");
+      card.hidden = !(matchesCategory && matchesSearch);
 
     });
-
-    button.setAttribute("aria-pressed", "true");
-    updateProjects();
-
-  });
-
-});
-
-if (projectSearch) {
-
-  projectSearch.addEventListener("input", updateProjects);
-
-}
-
-
-// Feature 3: Open and close the mobile navigation menu.
-const menuButton = document.getElementById("menu-toggle");
-const navigation = document.getElementById("main-navigation");
-
-if (menuButton && navigation) {
-
-  menuButton.addEventListener("click", function () {
-
-    const menuIsOpen = navigation.classList.toggle("is-open");
-    menuButton.setAttribute("aria-expanded", menuIsOpen);
-
-  });
-
-  navigation.querySelectorAll("a").forEach(function (link) {
-
-    link.addEventListener("click", function () {
-
-      navigation.classList.remove("is-open");
-      menuButton.setAttribute("aria-expanded", "false");
-
-    });
-
-  });
-
-}
-
-
-// Feature 4: Highlight the navigation link for the section in view.
-const pageSections = document.querySelectorAll("main section[id]");
-const pageLinks = document.querySelectorAll(
-  "#main-navigation a[href^='#']"
-);
-
-function updateActiveLink() {
-
-  let currentSection = pageSections.length > 0
-    ? pageSections[0].id
-    : "";
-
-  pageSections.forEach(function (section) {
-
-    if (section.getBoundingClientRect().top <= 150) {
-      currentSection = section.id;
-    }
-
-  });
-
-  pageLinks.forEach(function (link) {
-
-    const linkIsActive =
-      link.getAttribute("href") === "#" + currentSection;
-
-    link.classList.toggle("active", linkIsActive);
-
-    if (linkIsActive) {
-      link.setAttribute("aria-current", "location");
-    } else {
-      link.removeAttribute("aria-current");
-    }
-
-  });
-
-}
-
-window.addEventListener("scroll", updateActiveLink, { passive: true });
-updateActiveLink();
-
-
-// Feature 5: Show a button that returns the visitor to the top.
-const backToTopButton = document.getElementById("back-to-top");
-
-if (backToTopButton) {
-
-  function updateBackToTopButton() {
-
-    backToTopButton.hidden = window.scrollY < 300;
 
   }
 
-  window.addEventListener("scroll", updateBackToTopButton, {
-    passive: true
-  });
+  filterButtons.forEach(function (button) {
 
-  backToTopButton.addEventListener("click", function () {
+    button.addEventListener("click", function () {
 
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
+      selectedCategory = (button.dataset.filter || "all").toLowerCase();
+
+      filterButtons.forEach(function (filterButton) {
+        filterButton.classList.remove("active");
+        filterButton.setAttribute("aria-pressed", "false");
+      });
+
+      button.classList.add("active");
+      button.setAttribute("aria-pressed", "true");
+
+      showMatchingProjects();
+
     });
 
   });
 
-  updateBackToTopButton();
+  if (searchInput) {
 
-}
+    searchInput.addEventListener("input", function () {
+      searchText = searchInput.value.trim().toLowerCase();
+      showMatchingProjects();
+    });
+
+  }
+
+
+  // Mobile navigation menu
+  const menuButton = document.querySelector("#menu-toggle");
+  const navigation = document.querySelector("#main-navigation");
+
+  if (menuButton && navigation) {
+
+    menuButton.addEventListener("click", function () {
+
+      const menuIsOpen = navigation.classList.toggle("show");
+
+      menuButton.setAttribute("aria-expanded", menuIsOpen);
+
+    });
+
+    navigation.querySelectorAll("a").forEach(function (link) {
+
+      link.addEventListener("click", function () {
+        navigation.classList.remove("show");
+        menuButton.setAttribute("aria-expanded", "false");
+      });
+
+    });
+
+  }
+
+
+  // Highlight the navigation link for the section currently in view
+  const sections = document.querySelectorAll("main section[id]");
+  const navigationLinks = document.querySelectorAll("nav a[href^='#']");
+
+  if ("IntersectionObserver" in window && sections.length > 0) {
+
+    const sectionObserver = new IntersectionObserver(function (entries) {
+
+      entries.forEach(function (entry) {
+
+        if (entry.isIntersecting) {
+
+          navigationLinks.forEach(function (link) {
+
+            link.classList.toggle(
+              "active",
+              link.getAttribute("href") === "#" + entry.target.id
+            );
+
+          });
+
+        }
+
+      });
+
+    }, {
+      threshold: 0.4
+    });
+
+    sections.forEach(function (section) {
+      sectionObserver.observe(section);
+    });
+
+  }
+
+
+  // Back-to-top button
+  const backToTopButton = document.querySelector("#back-to-top");
+
+  if (backToTopButton) {
+
+    window.addEventListener("scroll", function () {
+
+      backToTopButton.hidden = window.scrollY < 300;
+
+    });
+
+    backToTopButton.addEventListener("click", function () {
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    });
+
+  }
+
+});
