@@ -28,7 +28,15 @@
       <section id="projects" aria-labelledby="projects-title">
         <h1 id="projects-title">My Projects</h1>
 
-        <article>
+        <div class="project-filters" role="group" aria-label="Filter projects">
+          <button class="filter-button" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter-button" type="button" data-filter="client" aria-pressed="false">Client</button>
+          <button class="filter-button" type="button" data-filter="personal" aria-pressed="false">Personal</button>
+          <button class="filter-button" type="button" data-filter="coursework" aria-pressed="false">Coursework</button>
+          <button class="filter-button" type="button" data-filter="ongoing" aria-pressed="false">In Progress</button>
+        </div>
+
+        <article data-category="client">
           <h2>Boutique E-commerce Website — Client Project</h2>
           <p>
             I contributed to a multi-page shopping website for a real boutique
@@ -40,7 +48,7 @@
           </p>
         </article>
 
-        <article>
+        <article data-category="personal">
           <h2>Personal Investment Activity Journal</h2>
           <p>
             I built a locally accessible app to organize my personal investment
@@ -50,7 +58,7 @@
           </p>
         </article>
 
-        <article>
+        <article data-category="coursework">
           <h2>Web Database Integration Project</h2>
           <p>
             I created a locally hosted university website to learn how websites
@@ -60,7 +68,7 @@
           </p>
         </article>
 
-        <article>
+        <article data-category="coursework">
           <h2>University Mini-Games Collection</h2>
           <p>
             I created several mini-games during my university studies, including
@@ -72,7 +80,7 @@
           </p>
         </article>
 
-        <article>
+        <article data-category="ongoing">
           <h2>Personal Productivity and Journal App — In Progress</h2>
           <p>
             I am currently developing a personal app for journaling and time
