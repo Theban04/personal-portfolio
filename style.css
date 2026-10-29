@@ -1,25 +1,28 @@
-/* Basic page setup */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
 
 :root {
-  --color-background: #f5f7fa;
+  --color-background: #f4f6f8;
   --color-surface: #ffffff;
-  --color-text: #1e293b;
-  --color-muted: #526174;
-  --color-primary: #12304a;
-  --color-accent: #087e8b;
-  --color-accent-light: #e5f4f4;
-  --color-border: #dbe3ea;
-  --color-shadow: rgba(18, 48, 74, 0.08);
+  --color-text: #202a36;
+  --color-muted: #596675;
+  --color-primary: #172b4d;
+  --color-accent: #315fbd;
+  --color-accent-light: #eaf0fa;
+  --color-border: #dce2e9;
+  --color-shadow: rgba(23, 43, 77, 0.08);
 }
+
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
 }
 
+
 body {
   margin: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
   line-height: 1.7;
   color: var(--color-text);
   background-color: var(--color-background);
@@ -37,6 +40,7 @@ header {
   box-shadow: 0 2px 12px var(--color-shadow);
 }
 
+
 nav {
   display: flex;
   justify-content: center;
@@ -47,42 +51,47 @@ nav {
   margin: 0 auto;
 }
 
+
 nav a {
   color: #ffffff;
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
+
 nav a:hover,
 nav a.active {
-  color: #8de0df;
+  color: #b9d0ff;
 }
+
 
 nav a:focus-visible,
 a:focus-visible,
 button:focus-visible,
 input:focus-visible {
-  outline: 3px solid #f4b942;
+  outline: 3px solid #f0bd4f;
   outline-offset: 4px;
 }
 
 
-/* Main page layout */
+/* Main layout */
 
 main {
   width: min(100% - 2rem, 1050px);
   margin: 0 auto;
 }
 
+
 section {
   margin: 2rem 0;
   padding: clamp(1.5rem, 4vw, 3rem);
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 18px;
+  border-radius: 16px;
   box-shadow: 0 8px 24px var(--color-shadow);
 }
+
 
 h1,
 h2,
@@ -91,25 +100,30 @@ h3 {
   line-height: 1.25;
 }
 
+
 h1 {
   margin-top: 0;
   font-size: clamp(2.2rem, 6vw, 3.6rem);
   letter-spacing: -0.04em;
 }
 
+
 h2 {
   margin-top: 0;
   font-size: clamp(1.7rem, 4vw, 2.25rem);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 
+
 h3 {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
 }
+
 
 p {
   color: var(--color-muted);
 }
+
 
 section p:last-child {
   margin-bottom: 0;
@@ -122,12 +136,13 @@ section p:last-child {
   margin-top: 2.5rem;
   padding-top: clamp(3rem, 8vw, 6rem);
   padding-bottom: clamp(3rem, 8vw, 6rem);
-  background: linear-gradient(135deg, #ffffff 45%, #e5f4f4);
+  background: linear-gradient(135deg, #ffffff 55%, #edf2fa);
 }
+
 
 #home p {
   max-width: 700px;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
 }
 
 
@@ -137,9 +152,11 @@ a {
   color: var(--color-accent);
 }
 
+
 a:hover {
   color: var(--color-primary);
 }
+
 
 .btn,
 button {
@@ -151,13 +168,14 @@ button {
   text-decoration: none;
   background-color: var(--color-accent);
   border: 2px solid var(--color-accent);
-  border-radius: 9px;
+  border-radius: 8px;
   cursor: pointer;
   transition:
     background-color 0.2s ease,
     border-color 0.2s ease,
     transform 0.2s ease;
 }
+
 
 .btn:hover,
 button:hover {
@@ -167,13 +185,14 @@ button:hover {
   transform: translateY(-2px);
 }
 
+
 .btn:active,
 button:active {
   transform: translateY(0);
 }
 
 
-/* Project search and category filters */
+/* Project search and filters */
 
 #project-search {
   width: min(100%, 420px);
@@ -183,8 +202,9 @@ button:active {
   font: inherit;
   background-color: #ffffff;
   border: 1px solid var(--color-border);
-  border-radius: 9px;
+  border-radius: 8px;
 }
+
 
 .filter-button {
   margin: 0.25rem 0.35rem 0.5rem 0;
@@ -192,6 +212,7 @@ button:active {
   background-color: var(--color-accent-light);
   border-color: transparent;
 }
+
 
 .filter-button:hover,
 .filter-button.active {
@@ -210,30 +231,35 @@ button:active {
   margin-top: 1.5rem;
 }
 
+
 .project-card,
 #projects article {
   margin: 1.25rem 0;
   padding: 1.5rem;
   background-color: #ffffff;
   border: 1px solid var(--color-border);
-  border-left: 4px solid var(--color-accent);
-  border-radius: 12px;
+  border-top: 3px solid var(--color-accent);
+  border-radius: 10px;
   box-shadow: 0 4px 14px var(--color-shadow);
 }
+
 
 .project-grid .project-card {
   margin: 0;
 }
+
 
 .project-card h3,
 #projects article h3 {
   margin-top: 0;
 }
 
+
 .project-card p,
 #projects article p {
   margin-bottom: 0.75rem;
 }
+
 
 .project-card[hidden],
 #projects article[hidden] {
@@ -248,11 +274,7 @@ button:active {
 }
 
 
-/* Mobile navigation support */
-
-#menu-toggle {
-  display: none;
-}
+/* Mobile layout */
 
 @media (max-width: 650px) {
 
@@ -275,7 +297,7 @@ button:active {
   section {
     margin: 1rem 0;
     padding: 1.35rem;
-    border-radius: 14px;
+    border-radius: 12px;
   }
 
   #home {
@@ -295,7 +317,7 @@ button:active {
 }
 
 
-/* Respect reduced-motion preferences */
+/* Reduce motion when requested in device settings */
 
 @media (prefers-reduced-motion: reduce) {
 
