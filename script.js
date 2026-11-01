@@ -210,3 +210,44 @@ document.addEventListener("DOMContentLoaded", function () {
   updateReadingProgress();
 
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const revealItems = document.querySelectorAll(
+    "main section, main article"
+  );
+
+  if (revealItems.length === 0) {
+    return;
+  }
+
+  if (!("IntersectionObserver" in window)) {
+    return;
+  }
+
+  document.body.classList.add("scroll-reveal-ready");
+
+  const revealObserver = new IntersectionObserver(
+    function (entries, observer) {
+
+      entries.forEach(function (entry) {
+
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+
+      });
+
+    },
+    {
+      threshold: 0.12
+    }
+  );
+
+  revealItems.forEach(function (item) {
+    revealObserver.observe(item);
+  });
+
+});

@@ -104,7 +104,7 @@ section {
     0 12px 40px rgba(0, 0, 0, 0.32),
     0 0 30px var(--color-glow);
   backdrop-filter: blur(12px);
-  animation: float-in 0.8s ease both;
+  
 }
 
 
@@ -317,19 +317,6 @@ button:active {
 }
 
 
-@keyframes float-in {
-
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-}
 
 
 @media (max-width: 650px) {
@@ -670,4 +657,22 @@ header {
     width: 155px;
   }
 
+}
+
+/* Gentle reveal as sections and project cards enter view */
+
+body.scroll-reveal-ready main section,
+body.scroll-reveal-ready main article {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+
+body.scroll-reveal-ready main section.is-visible,
+body.scroll-reveal-ready main article.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
