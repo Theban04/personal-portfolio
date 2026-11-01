@@ -141,3 +141,72 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  // Switch between the skill categories
+  const skillTabs = document.querySelectorAll(".skill-tab");
+  const skillPanels = document.querySelectorAll(".skill-panel");
+
+  skillTabs.forEach(function (tab) {
+
+    tab.addEventListener("click", function () {
+
+      skillTabs.forEach(function (otherTab) {
+        otherTab.classList.remove("active");
+        otherTab.setAttribute("aria-selected", "false");
+        otherTab.setAttribute("tabindex", "-1");
+      });
+
+      skillPanels.forEach(function (panel) {
+        panel.hidden = true;
+      });
+
+      tab.classList.add("active");
+      tab.setAttribute("aria-selected", "true");
+      tab.setAttribute("tabindex", "0");
+
+      const panel = document.getElementById(
+        tab.getAttribute("aria-controls")
+      );
+
+      if (panel) {
+        panel.hidden = false;
+      }
+
+    });
+
+  });
+
+
+  // Update the progress bar as the visitor scrolls
+  const progressFill = document.querySelector("#reading-progress-fill");
+
+  function updateReadingProgress() {
+
+    if (!progressFill) {
+      return;
+    }
+
+    const pageHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+
+    const scrollAmount = window.scrollY;
+
+    const progress = pageHeight > 0
+      ? (scrollAmount / pageHeight) * 100
+      : 0;
+
+    progressFill.style.width = progress + "%";
+
+  }
+
+  window.addEventListener("scroll", updateReadingProgress, {
+    passive: true
+  });
+
+  window.addEventListener("resize", updateReadingProgress);
+
+  updateReadingProgress();
+
+});

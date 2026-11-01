@@ -13,6 +13,10 @@
 
   <body>
 
+    <div id="reading-progress" aria-hidden="true">
+    <div id="reading-progress-fill"></div>
+    </div>
+
    <header>
 
   <button
@@ -47,6 +51,93 @@
       <section id="about" aria-labelledby="about-title">
         <h2 id="about-title">About Me</h2>
         <p> I am a Computer Science student majoring in Network Computing in UNIMAS. My goal is to become knowledgable in computer science as much as possible to build a lasting career in this field as long as possible especially with the fast growth of Artificial Intelligence. I am interested in learning more about cloud computing, Ai, Modern Software Development, Web Development an data science. I have experience with C, C++, Java, Html, CSS, JS and Python and willing to learn more language in database and data anaylisis.</p>
+        <div class="skills-section">
+
+  <h3>My Skills</h3>
+
+  <div class="skill-tabs" role="tablist" aria-label="Skill categories">
+
+    <button
+      class="skill-tab active"
+      id="tab-programming"
+      type="button"
+      role="tab"
+      aria-selected="true"
+      aria-controls="panel-programming">
+      Programming
+    </button>
+
+    <button
+      class="skill-tab"
+      id="tab-web"
+      type="button"
+      role="tab"
+      aria-selected="false"
+      aria-controls="panel-web"
+      tabindex="-1">
+      Web Development
+    </button>
+
+    <button
+      class="skill-tab"
+      id="tab-tools"
+      type="button"
+      role="tab"
+      aria-selected="false"
+      aria-controls="panel-tools"
+      tabindex="-1">
+      Tools
+    </button>
+
+  </div>
+
+  <div
+    class="skill-panel"
+    id="panel-programming"
+    role="tabpanel"
+    aria-labelledby="tab-programming">
+
+    <ul class="skill-list">
+      <li>C</li>
+      <li>C++</li>
+      <li>Java</li>
+      <li>Python</li>
+    </ul>
+
+  </div>
+
+  <div
+    class="skill-panel"
+    id="panel-web"
+    role="tabpanel"
+    aria-labelledby="tab-web"
+    hidden>
+
+    <ul class="skill-list">
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+    </ul>
+
+  </div>
+
+  <div
+    class="skill-panel"
+    id="panel-tools"
+    role="tabpanel"
+    aria-labelledby="tab-tools"
+    hidden>
+
+    <ul class="skill-list">
+      <li>Git</li>
+      <li>GitHub</li>
+      <li>XAMPP</li>
+      <li>cPanel</li>
+    </ul>
+
+  </div>
+
+</div>
       </section>
 
       <section id="projects" aria-labelledby="projects-title">
