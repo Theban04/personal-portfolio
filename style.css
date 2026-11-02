@@ -682,9 +682,11 @@ body.scroll-reveal-ready main article.is-visible {
 /* Project details pop-up */
 
 .project-dialog {
-  position: relative;
+  position: fixed;
+  inset: 0;
   width: min(620px, calc(100% - 2rem));
   max-height: 80vh;
+  margin: auto;
   padding: 2rem;
   overflow-y: auto;
   color: var(--color-text);
