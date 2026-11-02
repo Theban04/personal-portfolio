@@ -288,9 +288,13 @@ document.addEventListener("DOMContentLoaded", function () {
         detailsTemplate.content.cloneNode(true)
       );
 
-      projectDialog.showModal();
+     const savedScrollPosition = window.scrollY;
 
-    });
+        projectDialog.showModal();
+        closeButton.focus({ preventScroll: true });
+        window.scrollTo(0, savedScrollPosition);
+         
+      });
 
   });
 
