@@ -313,3 +313,62 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const imageDialog = document.querySelector("#image-lightbox");
+
+  if (!imageDialog) {
+    return;
+  }
+
+  const enlargedImage = document.querySelector("#image-lightbox-image");
+  const closeButton = document.querySelector("#image-lightbox-close");
+  const imageButtons =
+    document.querySelectorAll(".image-lightbox-trigger");
+
+  let savedScrollPosition = 0;
+
+  imageButtons.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+      const image = button.querySelector("img");
+
+      if (!image) {
+        return;
+      }
+
+      savedScrollPosition = window.scrollY;
+      enlargedImage.src = image.currentSrc || image.src;
+      enlargedImage.alt = image.alt;
+
+      imageDialog.showModal();
+      closeButton.focus({ preventScroll: true });
+      window.scrollTo(0, savedScrollPosition);
+
+    });
+
+  });
+
+
+  closeButton.addEventListener("click", function () {
+    imageDialog.close();
+  });
+
+
+  imageDialog.addEventListener("click", function (event) {
+
+    if (event.target === imageDialog) {
+      imageDialog.close();
+    }
+
+  });
+
+
+  imageDialog.addEventListener("close", function () {
+    window.scrollTo(0, savedScrollPosition);
+  });
+
+});
