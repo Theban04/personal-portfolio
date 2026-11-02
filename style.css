@@ -676,3 +676,57 @@ body.scroll-reveal-ready main article.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
+
+
+
+/* Project details pop-up */
+
+.project-dialog {
+  position: relative;
+  width: min(620px, calc(100% - 2rem));
+  max-height: 80vh;
+  padding: 2rem;
+  overflow-y: auto;
+  color: var(--color-text);
+  background: #14141b;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  box-shadow: 0 0 45px rgba(255, 255, 255, 0.14);
+}
+
+
+.project-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(5px);
+}
+
+
+.project-dialog h2 {
+  padding-right: 2.5rem;
+}
+
+
+.project-dialog-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  color: var(--color-white);
+  font-size: 1.7rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--color-border);
+  box-shadow: none;
+}
+
+
+.project-dialog-close:hover {
+  color: #09090d;
+  background-color: var(--color-white);
+}
+
+
+.project-details-button {
+  margin-top: 0.5rem;
+}

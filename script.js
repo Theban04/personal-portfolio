@@ -251,3 +251,61 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const projectDialog = document.querySelector("#project-dialog");
+
+  if (!projectDialog) {
+    return;
+  }
+
+  const dialogTitle = document.querySelector("#project-dialog-title");
+  const dialogContent = document.querySelector("#project-dialog-content");
+  const closeButton = document.querySelector("#project-dialog-close");
+  const detailButtons = document.querySelectorAll(".project-details-button");
+
+  detailButtons.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+      const projectCard = button.closest("article, .project-card");
+
+      if (!projectCard) {
+        return;
+      }
+
+      const projectTitle = projectCard.querySelector("h2, h3");
+      const detailsTemplate =
+        projectCard.querySelector(".project-details-content");
+
+      if (!projectTitle || !detailsTemplate) {
+        return;
+      }
+
+      dialogTitle.textContent = projectTitle.textContent;
+      dialogContent.replaceChildren(
+        detailsTemplate.content.cloneNode(true)
+      );
+
+      projectDialog.showModal();
+
+    });
+
+  });
+
+
+  closeButton.addEventListener("click", function () {
+    projectDialog.close();
+  });
+
+
+  projectDialog.addEventListener("click", function (event) {
+
+    if (event.target === projectDialog) {
+      projectDialog.close();
+    }
+
+  });
+
+});

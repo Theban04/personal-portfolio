@@ -62,6 +62,27 @@
             development and manually troubleshot problems they could not
             resolve. The website is hosted through GoDaddy and cPanel.
           </p>
+
+          <button class="project-details-button" type="button">
+          More details
+            </button>
+
+            <template class="project-details-content">
+              <p>
+                I built a multi-page online boutique store for a real client. It includes
+                product browsing, a shopping cart, checkout, and contact links. An admin
+                area lets the client update product information and upload product images.
+              </p>
+
+              <p>
+                I used AI-assisted tools during development and applied my web development
+                knowledge to investigate and manually troubleshoot issues the tools
+                couldn't solve.
+              </p>
+
+              <p><strong>Hosting:</strong> GoDaddy with cPanel.</p>
+            </template>
+
         </article>
 
         <article data-category="personal">
@@ -72,6 +93,24 @@
             over time, so I can make more informed decisions about my future
             plans.
           </p>
+
+            <button class="project-details-button" type="button">
+                More details
+              </button>
+
+              <template class="project-details-content">
+                <p>
+                  I built a personal app for recording and reviewing my investment activity.
+                  It helps me calculate results, keep a record over time, and use that
+                  information when considering future decisions.
+                </p>
+
+                <p>
+                  The app is for my local personal use.
+                </p>
+              </template>
+
+        
         </article>
 
         <article data-category="coursework">
@@ -82,6 +121,25 @@
             JavaScript, and XAMPP as the local environment. This project helped
             me understand database connections and troubleshoot setup problems.
           </p>
+
+          <button class="project-details-button" type="button">
+            More details
+          </button>
+
+          <template class="project-details-content">
+            <p>
+              I built this university project to learn how a website connects to a
+              database. The work focused on building the database and connecting it to
+              the site, using XAMPP for the local development environment.
+            </p>
+
+            <p>
+              I used HTML and CSS, with some JavaScript. The project gave me practical
+              experience investigating database connection and setup problems.
+            </p>
+          </template>
+
+
         </article>
 
         <article data-category="coursework">
@@ -94,6 +152,25 @@
             practise turning game rules into program logic and building
             interactive experiences.
           </p>
+
+          <button class="project-details-button" type="button">
+            More details
+          </button>
+
+          <template class="project-details-content">
+            <p>
+              This collection brings together mini-games I made during university:
+              a number guessing game, a quiz inside an educational application,
+              Tic-Tac-Toe, and a Jet Meteor shooting game.
+            </p>
+
+            <p>
+              Across these projects, I worked with C, C++, and Java, and used HTML in
+              some of the games.
+            </p>
+          </template>
+
+
         </article>
 
         <article data-category="ongoing">
@@ -104,11 +181,49 @@
             notes, to-do list, and reminders. I will update this project as I
             complete more of the planned features.
           </p>
+
+          <button class="project-details-button" type="button">
+            More details
+          </button>
+
+          <template class="project-details-content">
+            <p>
+              This personal app is currently in progress. I’m planning it as a place to
+              organize my daily life and manage my time.
+            </p>
+
+            <p>
+              Planned features include a calendar, timetable, journal and notes,
+              to-do list, and reminders. These are goals for the app; they may not
+              all be implemented yet.
+            </p>
+          </template>
+
+
         </article>
 
       </section>
 
     </main>
+
+        <dialog
+          class="project-dialog"
+          id="project-dialog"
+          aria-labelledby="project-dialog-title">
+
+          <button
+            class="project-dialog-close"
+            id="project-dialog-close"
+            type="button"
+            aria-label="Close project details">
+            &times;
+          </button>
+
+          <h2 id="project-dialog-title"></h2>
+
+          <div id="project-dialog-content"></div>
+
+        </dialog>
 
     <script src="script.js"></script>
 
