@@ -818,3 +818,25 @@ dialog.image-lightbox .image-lightbox-close {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
+
+.project-dialog {
+  box-sizing: border-box;
+  width: min(620px, calc(100vw - 2rem));
+  max-width: calc(100vw - 2rem);
+  max-height: calc(100vh - 2rem);
+  max-height: calc(100dvh - 2rem);
+  padding: 1.25rem;
+  overflow-y: auto;
+}
+
+
+.project-dialog h2 {
+  padding-right: 2.5rem;
+  overflow-wrap: anywhere;
+}
+
+
+.project-dialog-close {
+  top: 0.75rem;
+  right: 0.75rem;
+}
